@@ -18,7 +18,6 @@ $(document).ready(function () {
     // adds rows and hours in the day
     function renderRows(sHour,eHour){
         $('.container').html('')
-        console.log('ran')
         for (let hour = sHour; hour <= eHour; hour++) {
             // add the rows
             $hourRow = $('<div>')
@@ -43,6 +42,8 @@ $(document).ready(function () {
             $hourRow.append($saveBtn)
             $saveBtn.addClass('saveBtn')
             $saveBtn.attr('id', `save-${hour}`)
+            $saveBtn.html(`<i class="fa fa-floppy-o" aria-hidden="true"></i>`)
+
         }
     }
 
@@ -77,6 +78,8 @@ $(document).ready(function () {
         // get the number row we are in
         let textNum = event.target.id.substr(5);
         console.log(textNum)
+
+        console.log($this)
         //  Then look into the textarea using that hour we've determined and pull the data out of the textarea and into a variable. THis is failing.
         addedText = $(`#text-${textNum}`).textContent
         console.log(addedText)

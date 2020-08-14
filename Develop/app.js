@@ -12,35 +12,38 @@ $(document).ready(function () {
     // WHEN I view the timeblocks for that day
     // THEN each timeblock is color coded to indicate whether it is in the past, present, or future
 
-    // startingHour = prompt('when do you start work?')
-    // endingHour = prompt('when do you finish work?')
-    //replace 0 and 24 with above var
+    let startingHour = 9
+    let endingHour = 17
 
     // adds rows and hours in the day
-    for (let hour = 0; hour <= 24; hour++) {
-        // add the rows
-        $hourRow = $('<div>')
-        $hourRow.addClass('row')
-        $('.container').append($hourRow)
+    function renderRows(sHour,eHour){
+        $('.container').html = ''
+        console.log('ran')
+        for (let hour = sHour; hour <= eHour; hour++) {
+            // add the rows
+            $hourRow = $('<div>')
+            $hourRow.addClass('row')
+            $('.container').append($hourRow)
 
-        // add the hour block
-        $hour = $('<p>')
-        $hour.text(`${hour}:00`)
-        $hourRow.append($hour)
-        $hour.addClass('hour')
+            // add the hour block
+            $hour = $('<p>')
+            $hour.text(`${hour}:00`)
+            $hourRow.append($hour)
+            $hour.addClass('hour')
 
-        // add the text area block
-        $textArea = $('<textarea>')
-        $hourRow.append($textArea)
-        $textArea.attr('id', `text-${hour}`)
-        // call function to color hours
-        checkHourColor(hour)
+            // add the text area block
+            $textArea = $('<textarea>')
+            $hourRow.append($textArea)
+            $textArea.attr('id', `text-${hour}`)
+            // call function to color hours
+            checkHourColor(hour)
 
-        // add the save button block
-        $saveBtn = $('<div>')
-        $hourRow.append($saveBtn)
-        $saveBtn.addClass('saveBtn')
-        $saveBtn.attr('id', `save-${hour}`)
+            // add the save button block
+            $saveBtn = $('<div>')
+            $hourRow.append($saveBtn)
+            $saveBtn.addClass('saveBtn')
+            $saveBtn.attr('id', `save-${hour}`)
+        }
     }
 
     // adding colors to hard-coded HTML elements seems like a pain
@@ -80,5 +83,15 @@ $(document).ready(function () {
 
         // Finally, save the text to localstorage with the  hour of the day as the key and the text as the value.
     })
+
+    $('#hourSubmit').on('click', function(event){
+        event.preventDefault();
+        startingHour = $('#startHour').val()
+        console.log(startingHour)
+        endingHour = $('#endingHour').val()
+        renderRows(startingHour,endingHour);
+    })
+
+    renderRows(startingHour,endingHour);
 
 })

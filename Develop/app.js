@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     // adds rows and hours in the day
     function renderRows(sHour,eHour){
-        $('.container').html = ''
+        $('.container').html('')
         console.log('ran')
         for (let hour = sHour; hour <= eHour; hour++) {
             // add the rows

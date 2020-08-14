@@ -73,11 +73,10 @@ textarea{
   transition: all .3s ease-in-out;
 }
 
-.container{
+.hourInputs{
   text-align: center;
 }
 
 input{
   margin: 20px;
-
 }

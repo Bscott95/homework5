@@ -65,8 +65,8 @@ $(document).ready(function () {
     // on submiting what you want the start and ending times to be, re-render the rows
     $('#hourSubmit').on('click', function(event){
         event.preventDefault();
-        startingHour = $('#startHour').val()
-        endingHour = $('#endingHour').val()
+        startingHour = parseInt($('#startHour').val())
+        endingHour = parseInt($('#endingHour').val())
         renderRows(startingHour,endingHour);
     })
 
